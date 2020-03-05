@@ -28,7 +28,7 @@ class Game(var playerOne: String, var playerTwo: String) {
 
     fun hasThreeSameDiagonalCells(): Boolean {
         for (i in 0 until BOARD_SIZE)
-            if (areEqual(cells[0][0], cells[1][1], cells[2][2]))
+            if (areEqual(cells[0][0], cells[1][1], cells[2][2]) || areEqual(cells[0][2], cells[1][1], cells[2][0]))
                 return true
         return false
     }
