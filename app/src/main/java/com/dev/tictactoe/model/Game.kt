@@ -10,6 +10,10 @@ class Game(var playerOne: String, var playerTwo: String) {
         currentPlayer = if (currentPlayer == player1) player2 else player1
     }
 
+    fun hasThreeSameHorizontalCells(): Boolean {
+        return false
+    }
+
     fun areEqual(vararg cells: Cell): Boolean {
             if (cells.isEmpty()) return false
         for (cell in cells)

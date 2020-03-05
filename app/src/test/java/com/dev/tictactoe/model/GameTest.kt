@@ -109,4 +109,13 @@ class GameTest {
 
         Assert.assertEquals(expectedResult, actualResult)
     }
+
+    @Test
+    fun `Given function should return expected result, when player does not have value in horizontal cell`(){
+        val expectedResult = false
+
+        val actualResult = game.hasThreeSameHorizontalCells()
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
 }
