@@ -18,4 +18,10 @@ class CellTest {
 
         Assert.assertEquals(expectedResult, actualResult)
     }
+
+    @Test
+    fun `Given function should return expected value, when cell is not null`(){
+        val actualResult = cell.isEmpty
+        Assert.assertFalse(actualResult)
+    }
 }
