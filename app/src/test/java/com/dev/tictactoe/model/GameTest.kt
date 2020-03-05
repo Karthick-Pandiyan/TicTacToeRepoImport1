@@ -191,4 +191,16 @@ class GameTest {
 
         Assert.assertFalse(actualResult)
     }
+
+    @Test
+    fun `Given function should return expected result, when winner available in horizontal cells`(){
+
+        val cell = Cell(game.player1)
+        game.cells[0][0] = cell
+        game.cells[0][1] = cell
+        game.cells[0][2] = cell
+        val actualResult = game.isWinnerAvailable()
+
+        Assert.assertTrue(actualResult)
+    }
 }
