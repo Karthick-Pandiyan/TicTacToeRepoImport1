@@ -1,0 +1,12 @@
+package com.kp.tictactoe.utilities
+
+class StringUtility {
+    companion object {
+        fun stringFromNumbers(vararg numbers: Int): String {
+            val sNumbers = StringBuilder()
+            for (number in numbers)
+                sNumbers.append(number)
+            return sNumbers.toString()
+        }
+    }
+}
