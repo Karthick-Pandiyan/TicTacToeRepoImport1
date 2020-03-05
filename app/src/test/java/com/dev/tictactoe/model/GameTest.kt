@@ -73,4 +73,16 @@ class GameTest {
     fun `Given function should return false when cell is empty`(){
         Assert.assertFalse(game.areEqual())
     }
+
+    @Test
+    fun `Given function should return false when player value is not available`(){
+        val expectedResult = false
+
+        val player = Player(playerOne, "")
+        val cell = Cell(player)
+
+        val actualResult = game.areEqual(cell)
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
 }
