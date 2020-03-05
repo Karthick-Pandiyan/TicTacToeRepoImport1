@@ -97,4 +97,16 @@ class GameTest {
 
         Assert.assertEquals(expectedResult, actualResult)
     }
+
+    @Test
+    fun `Given function should return true when player values are equals in the cells`(){
+        val expectedResult = true
+
+        val cellOne = Cell(game.player1)
+        val cellTwo = Cell(game.player1)
+
+        val actualResult = game.areEqual(cellOne, cellTwo)
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
 }
