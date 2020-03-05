@@ -33,6 +33,13 @@ class Game(var playerOne: String, var playerTwo: String) {
         return false
     }
 
+    fun isBoardFull(): Boolean {
+        for (row in cells)
+            for (cell in row)
+                if (cell.isEmpty) return false
+        return true
+    }
+
     fun areEqual(vararg cells: Cell): Boolean {
             if (cells.isEmpty()) return false
         for (cell in cells)

@@ -184,4 +184,11 @@ class GameTest {
 
         Assert.assertTrue(actualResult)
     }
+
+    @Test
+    fun `Given function should return false when game board is not full`(){
+        val actualResult = game.isBoardFull()
+
+        Assert.assertFalse(actualResult)
+    }
 }
