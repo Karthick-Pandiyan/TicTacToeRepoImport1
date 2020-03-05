@@ -1,8 +1,8 @@
 package com.dev.tictactoe.model
+import com.dev.tictactoe.constant.GameConstant.Companion.BOARD_SIZE
 
 class Game(var playerOne: String, var playerTwo: String) {
 
-    private val BOARD_SIZE = 3
     val player1 =  Player(playerOne, "X")
     val player2 = Player(playerTwo, "O")
     var currentPlayer = player1
