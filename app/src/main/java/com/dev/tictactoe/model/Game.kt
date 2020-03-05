@@ -10,4 +10,8 @@ class Game(var playerOne: String, var playerTwo: String) {
         currentPlayer = if (currentPlayer == player1) player2 else player1
     }
 
+    fun areEqual(vararg cells: Cell): Boolean {
+            if (cells.isEmpty()) return false
+        return true
+    }
 }

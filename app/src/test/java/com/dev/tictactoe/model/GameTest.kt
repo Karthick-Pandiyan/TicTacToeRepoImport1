@@ -68,4 +68,9 @@ class GameTest {
 
         Assert.assertEquals(expectedResult, actualResult)
     }
+
+    @Test
+    fun `Given function should return false when cell is empty`(){
+        Assert.assertFalse(game.areEqual())
+    }
 }
