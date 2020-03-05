@@ -10,6 +10,8 @@ class GameViewModelTest {
     private val playerOne = "John"
     private val playerTwo = "Harry"
     private val playerOneValue = "X"
+    private val ROW_INDEX = 0
+    private val COLUMN_INDEX = 0
 
     @Test
     fun `Given function should return player one name`(){
@@ -37,9 +39,9 @@ class GameViewModelTest {
         val expectedResult = playerOne
 
         viewModel.init(playerOne, playerTwo)
-        viewModel.onClickedCellAt(0,0)
+        viewModel.onClickedCellAt(ROW_INDEX,COLUMN_INDEX)
 
-        val actualResult =  viewModel.game.cells[0][0].player?.name
+        val actualResult =  viewModel.game.cells[ROW_INDEX][COLUMN_INDEX].player?.name
 
         Assert.assertEquals(expectedResult, actualResult)
     }
@@ -49,9 +51,9 @@ class GameViewModelTest {
         val expectedResult = playerOneValue
 
         viewModel.init(playerOne, playerTwo)
-        viewModel.onClickedCellAt(0,0)
+        viewModel.onClickedCellAt(ROW_INDEX,COLUMN_INDEX)
 
-        val actualResult =  viewModel.cells[StringUtility.stringFromNumbers(0, 0)]
+        val actualResult =  viewModel.cells[StringUtility.stringFromNumbers(ROW_INDEX, COLUMN_INDEX)]
 
         Assert.assertEquals(expectedResult, actualResult)
     }
