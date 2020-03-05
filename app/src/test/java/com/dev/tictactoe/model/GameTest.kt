@@ -118,4 +118,16 @@ class GameTest {
 
         Assert.assertEquals(expectedResult, actualResult)
     }
+
+    @Test
+    fun `Given function should return expected result, when player have same values in horizontal cells`(){
+
+        val cell = Cell(game.player1)
+        game.cells[0][0] = cell
+        game.cells[0][1] = cell
+        game.cells[0][2] = cell
+        val actualResult = game.hasThreeSameHorizontalCells()
+
+        Assert.assertTrue(actualResult)
+    }
 }

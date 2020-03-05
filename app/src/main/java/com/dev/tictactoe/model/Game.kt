@@ -2,15 +2,20 @@ package com.dev.tictactoe.model
 
 class Game(var playerOne: String, var playerTwo: String) {
 
+    private val BOARD_SIZE = 3
     val player1 =  Player(playerOne, "X")
     val player2 = Player(playerTwo, "O")
     var currentPlayer = player1
+    var cells = Array(BOARD_SIZE) { Array(BOARD_SIZE) { Cell(null) } }
 
     fun switchPlayer() {
         currentPlayer = if (currentPlayer == player1) player2 else player1
     }
 
     fun hasThreeSameHorizontalCells(): Boolean {
+        for (i in 0 until BOARD_SIZE)
+            if (areEqual(cells[i][0], cells[i][1], cells[i][2]))
+                return true
         return false
     }
 
