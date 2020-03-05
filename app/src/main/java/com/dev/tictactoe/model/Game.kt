@@ -20,6 +20,9 @@ class Game(var playerOne: String, var playerTwo: String) {
     }
 
     fun hasThreeSameVerticalCells(): Boolean {
+        for (i in 0 until BOARD_SIZE)
+            if (areEqual(cells[0][i], cells[1][i], cells[2][i]))
+                return true
         return false
     }
 
