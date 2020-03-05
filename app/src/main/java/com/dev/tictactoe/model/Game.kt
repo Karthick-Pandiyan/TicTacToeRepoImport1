@@ -19,6 +19,10 @@ class Game(var playerOne: String, var playerTwo: String) {
         return false
     }
 
+    fun hasThreeSameVerticalCells(): Boolean {
+        return false
+    }
+
     fun areEqual(vararg cells: Cell): Boolean {
             if (cells.isEmpty()) return false
         for (cell in cells)

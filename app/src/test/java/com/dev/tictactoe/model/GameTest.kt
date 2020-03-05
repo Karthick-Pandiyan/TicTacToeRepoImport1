@@ -130,4 +130,13 @@ class GameTest {
 
         Assert.assertTrue(actualResult)
     }
+
+    @Test
+    fun `Given function should return expected result in the vertical cells`(){
+        val expectedResult = false
+
+        val actualResult = game.hasThreeSameVerticalCells()
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
 }
