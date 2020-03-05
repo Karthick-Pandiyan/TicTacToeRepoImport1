@@ -8,7 +8,7 @@ class Game(var playerOne: String, var playerTwo: String) {
     var currentPlayer = player1
     var cells = Array(BOARD_SIZE) { Array(BOARD_SIZE) { Cell(null) } }
 
-    fun isWinnerAvailable(): Boolean = hasThreeSameHorizontalCells() || hasThreeSameVerticalCells()
+    fun isWinnerAvailable(): Boolean = hasThreeSameHorizontalCells() || hasThreeSameVerticalCells() || hasThreeSameDiagonalCells()
 
     fun switchPlayer() {
         currentPlayer = if (currentPlayer == player1) player2 else player1

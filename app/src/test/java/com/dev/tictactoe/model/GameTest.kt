@@ -215,4 +215,16 @@ class GameTest {
 
         Assert.assertTrue(actualResult)
     }
+
+    @Test
+    fun `Given function should return expected result, when winner available in diagonal cells`(){
+
+        val cell = Cell(game.player1)
+        game.cells[0][2] = cell
+        game.cells[1][1] = cell
+        game.cells[2][0] = cell
+        val actualResult = game.isWinnerAvailable()
+
+        Assert.assertTrue(actualResult)
+    }
 }
