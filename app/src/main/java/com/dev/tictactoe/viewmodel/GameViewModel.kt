@@ -1,6 +1,8 @@
 package com.dev.tictactoe.viewmodel
 
 import androidx.databinding.ObservableArrayMap
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dev.tictactoe.model.Cell
 import com.dev.tictactoe.model.Game
@@ -10,11 +12,14 @@ class GameViewModel: ViewModel() {
 
     lateinit var game: Game
     lateinit var cells: ObservableArrayMap<String, String>
+    var winner = MutableLiveData<String>()
 
     fun init(playerOne: String, playerTwo: String){
         game = Game(playerOne, playerTwo)
         cells = ObservableArrayMap()
     }
+
+    fun getWinner(): LiveData<String> = winner
 
     fun onClickedCellAt(row: Int, column: Int) {
         if (game.cells[row][column].isEmpty) {
