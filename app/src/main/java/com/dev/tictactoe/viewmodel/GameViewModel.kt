@@ -1,11 +1,12 @@
 package com.dev.tictactoe.viewmodel
 
 import androidx.databinding.ObservableArrayMap
+import androidx.lifecycle.ViewModel
 import com.dev.tictactoe.model.Cell
 import com.dev.tictactoe.model.Game
 import com.kp.tictactoe.utilities.StringUtility
 
-class GameViewModel {
+class GameViewModel: ViewModel() {
 
     lateinit var game: Game
     lateinit var cells: ObservableArrayMap<String, String>
