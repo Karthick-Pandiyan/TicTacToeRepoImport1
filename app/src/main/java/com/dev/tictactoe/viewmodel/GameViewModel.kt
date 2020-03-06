@@ -27,6 +27,9 @@ class GameViewModel: ViewModel() {
         if(game.isWinnerAvailable()){
             return true
         }
+        if(game.isBoardFull()) {
+            return true
+        }
         return false
     }
 }

@@ -84,4 +84,29 @@ class GameViewModelTest {
 
         Assert.assertEquals(expectedResult, actualResult)
     }
+
+    @Test
+    fun `Given function should return no winner, if game board doesn't have winner but board is full`(){
+        val expectedResult = true
+
+        viewModel.init(playerOne, playerTwo)
+        val cell1 = Cell(viewModel.game.player1)
+        val cell2 = Cell(viewModel.game.player2)
+
+        viewModel.game.cells[0][0] = cell1
+        viewModel.game.cells[0][1] = cell1
+        viewModel.game.cells[0][2] = cell2
+
+        viewModel.game.cells[1][0] = cell2
+        viewModel.game.cells[1][1] = cell2
+        viewModel.game.cells[1][2] = cell1
+
+        viewModel.game.cells[2][0] = cell1
+        viewModel.game.cells[2][1] = cell1
+        viewModel.game.cells[2][2] = cell2
+
+        val actualResult =  viewModel.hasGameEnded()
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
 }
