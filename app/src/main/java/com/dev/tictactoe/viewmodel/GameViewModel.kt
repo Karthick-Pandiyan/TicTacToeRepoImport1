@@ -24,6 +24,9 @@ class GameViewModel: ViewModel() {
     }
 
     fun hasGameEnded(): Boolean {
+        if(game.isWinnerAvailable()){
+            return true
+        }
         return false
     }
 }

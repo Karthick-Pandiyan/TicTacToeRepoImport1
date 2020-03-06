@@ -1,5 +1,6 @@
 package com.dev.tictactoe.viewmodel
 
+import com.dev.tictactoe.model.Cell
 import com.kp.tictactoe.utilities.StringUtility
 import org.junit.Assert
 import org.junit.Test
@@ -63,6 +64,21 @@ class GameViewModelTest {
         val expectedResult = false
 
         viewModel.init(playerOne, playerTwo)
+
+        val actualResult =  viewModel.hasGameEnded()
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
+
+    @Test
+    fun `Given function should return winner, if game has winner in the board`(){
+        val expectedResult = true
+
+        viewModel.init(playerOne, playerTwo)
+        val cell = Cell(viewModel.game.player1)
+        viewModel.game.cells[0][0] = cell
+        viewModel.game.cells[0][1] = cell
+        viewModel.game.cells[0][2] = cell
 
         val actualResult =  viewModel.hasGameEnded()
 
