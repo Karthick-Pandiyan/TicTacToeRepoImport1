@@ -175,4 +175,16 @@ class GameViewModelTest {
         Assert.assertEquals(expectedResult, actualResult)
     }
 
+    @Test
+    fun `Given function should switch the player, when game board is not full and no winner found`(){
+        val expectedResult = playerTwo
+
+        viewModel.init(playerOne, playerTwo)
+        viewModel.onClickedCellAt(ROW_INDEX,COLUMN_INDEX)
+
+        val actualResult = viewModel.game.currentPlayer.name
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
+
 }

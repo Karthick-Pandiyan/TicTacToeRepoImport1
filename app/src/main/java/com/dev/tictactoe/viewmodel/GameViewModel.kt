@@ -28,6 +28,7 @@ class GameViewModel: ViewModel() {
         if (game.cells[row][column].isEmpty) {
             game.cells[row][column] = Cell(game.currentPlayer)
             cells[StringUtility.stringFromNumbers(row, column)] = game.currentPlayer.value
+            if (!hasGameEnded()) game.switchPlayer()
         }
     }
 
