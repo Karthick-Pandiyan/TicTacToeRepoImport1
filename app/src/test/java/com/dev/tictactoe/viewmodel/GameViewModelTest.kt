@@ -1,9 +1,12 @@
 package com.dev.tictactoe.viewmodel
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dev.tictactoe.model.Cell
 import com.kp.tictactoe.utilities.StringUtility
 import org.junit.Assert
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TestRule
 
 class GameViewModelTest {
 
@@ -13,6 +16,10 @@ class GameViewModelTest {
     private val playerOneValue = "X"
     private val ROW_INDEX = 0
     private val COLUMN_INDEX = 0
+
+    @Rule
+    @JvmField
+    var rule: TestRule = InstantTaskExecutorRule()
 
     @Test
     fun `Given function should return player one name`(){
@@ -116,6 +123,22 @@ class GameViewModelTest {
         val actualResult =  viewModel.getWinner()
 
         Assert.assertNotNull(actualResult)
+    }
+
+    @Test
+    fun `Given function should return winner in Live Data, if game has winner in the board`(){
+        val expectedResult = playerOne
+
+        viewModel.init(playerOne, playerTwo)
+        val cell = Cell(viewModel.game.player1)
+        viewModel.game.cells[0][0] = cell
+        viewModel.game.cells[0][1] = cell
+        viewModel.game.cells[0][2] = cell
+        viewModel.hasGameEnded()
+
+        val actualResult =  viewModel.getWinner().value
+
+        Assert.assertEquals(expectedResult, actualResult)
     }
 
 }

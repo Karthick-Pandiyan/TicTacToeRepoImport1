@@ -30,6 +30,7 @@ class GameViewModel: ViewModel() {
 
     fun hasGameEnded(): Boolean {
         if(game.isWinnerAvailable()){
+            winner.postValue(game.currentPlayer.name)
             return true
         }
         if(game.isBoardFull()) {
