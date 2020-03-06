@@ -22,4 +22,8 @@ class GameViewModel: ViewModel() {
             cells[StringUtility.stringFromNumbers(row, column)] = game.currentPlayer.value
         }
     }
+
+    fun hasGameEnded(): Boolean {
+        return false
+    }
 }

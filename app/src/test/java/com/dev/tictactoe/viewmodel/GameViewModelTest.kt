@@ -57,4 +57,15 @@ class GameViewModelTest {
 
         Assert.assertEquals(expectedResult, actualResult)
     }
+
+    @Test
+    fun `Given function should return false, if game hasn't ended`(){
+        val expectedResult = false
+
+        viewModel.init(playerOne, playerTwo)
+
+        val actualResult =  viewModel.hasGameEnded()
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
 }
