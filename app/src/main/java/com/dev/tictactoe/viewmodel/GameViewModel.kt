@@ -13,10 +13,14 @@ class GameViewModel: ViewModel() {
 
     lateinit var game: Game
     lateinit var cells: ObservableArrayMap<String, String>
+    lateinit var playerOne: String
+    lateinit var playerTwo: String
     var winner = MutableLiveData<String>()
     var noWinner = MutableLiveData<String>()
 
     fun init(playerOne: String, playerTwo: String){
+        this.playerOne = playerOne
+        this.playerTwo = playerTwo
         game = Game(playerOne, playerTwo)
         cells = ObservableArrayMap()
     }
@@ -42,5 +46,8 @@ class GameViewModel: ViewModel() {
             return true
         }
         return false
+    }
+    fun resetGame(){
+        init(playerOne, playerTwo)
     }
 }
