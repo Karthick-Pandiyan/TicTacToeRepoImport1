@@ -202,4 +202,21 @@ class GameViewModelTest {
         Assert.assertEquals(expectedResult, actualResult)
     }
 
+    @Test
+    fun `Given function should reset winner in Live Data, when game is restarted`(){
+        val expectedResult = null
+
+        viewModel.init(playerOne, playerTwo)
+        val cell = Cell(viewModel.game.player1)
+        viewModel.game.cells[0][0] = cell
+        viewModel.game.cells[0][1] = cell
+        viewModel.game.cells[0][2] = cell
+        viewModel.hasGameEnded()
+        viewModel.resetGame()
+
+        val actualResult =  viewModel.getWinner().value
+
+        Assert.assertEquals(expectedResult, actualResult)
+    }
+
 }

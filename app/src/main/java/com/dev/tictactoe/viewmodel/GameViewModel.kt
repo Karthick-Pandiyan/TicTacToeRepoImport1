@@ -49,5 +49,6 @@ class GameViewModel: ViewModel() {
     }
     fun resetGame(){
         init(playerOne, playerTwo)
+        winner = MutableLiveData()
     }
 }
