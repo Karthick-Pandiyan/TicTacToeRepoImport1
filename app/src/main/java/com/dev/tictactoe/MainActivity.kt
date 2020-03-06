@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpOnGameEndListener() {
         gameViewModel.getWinner().observe(this, Observer { playerName ->
-            showWinnerName(playerName)
+            showGameResult("${getString(R.string.winner_is)} $playerName!")
         })
         gameViewModel.getNoWinner().observe(this, Observer{ message ->
-            showIfNoWinner(message)
+            showGameResult(message)
         })
     }
 
@@ -44,12 +44,7 @@ class MainActivity : AppCompatActivity() {
         }, 500)
     }
 
-    private fun showWinnerName(playerName: String){
-        Toast.makeText(this, "${getString(R.string.winner_is)} $playerName!", Toast.LENGTH_LONG).show()
-        resetGame()
-    }
-
-    private fun showIfNoWinner(message: String){
+    private fun showGameResult(message: String){
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         resetGame()
     }

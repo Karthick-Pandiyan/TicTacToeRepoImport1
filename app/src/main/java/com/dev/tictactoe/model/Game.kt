@@ -1,12 +1,12 @@
 package com.dev.tictactoe.model
-import com.dev.tictactoe.constant.GameConstant.Companion.BOARD_SIZE
+import com.dev.tictactoe.constant.GameConstant
 
 class Game(var playerOne: String, var playerTwo: String) {
 
-    val player1 =  Player(playerOne, "X")
-    val player2 = Player(playerTwo, "O")
+    val player1 =  Player(playerOne, GameConstant.PLAYER_ONE_VALUE)
+    val player2 = Player(playerTwo, GameConstant.PLAYER_TWO_VALUE)
     var currentPlayer = player1
-    var cells = Array(BOARD_SIZE) { Array(BOARD_SIZE) { Cell(null) } }
+    var cells = Array(GameConstant.BOARD_SIZE) { Array(GameConstant.BOARD_SIZE) { Cell(null) } }
 
     fun isWinnerAvailable(): Boolean = hasThreeSameHorizontalCells() || hasThreeSameVerticalCells() || hasThreeSameDiagonalCells()
 
@@ -15,22 +15,23 @@ class Game(var playerOne: String, var playerTwo: String) {
     }
 
     fun hasThreeSameHorizontalCells(): Boolean {
-        for (i in 0 until BOARD_SIZE)
-            if (areEqual(cells[i][0], cells[i][1], cells[i][2]))
+        for (i in GameConstant.INDEX_ZERO until GameConstant.BOARD_SIZE)
+            if (areEqual(cells[i][GameConstant.INDEX_ZERO], cells[i][GameConstant.INDEX_ONE], cells[i][GameConstant.INDEX_TWO]))
                 return true
         return false
     }
 
     fun hasThreeSameVerticalCells(): Boolean {
-        for (i in 0 until BOARD_SIZE)
-            if (areEqual(cells[0][i], cells[1][i], cells[2][i]))
+        for (i in GameConstant.INDEX_ZERO until GameConstant.BOARD_SIZE)
+            if (areEqual(cells[GameConstant.INDEX_ZERO][i], cells[GameConstant.INDEX_ONE][i], cells[GameConstant.INDEX_TWO][i]))
                 return true
         return false
     }
 
     fun hasThreeSameDiagonalCells(): Boolean {
-        for (i in 0 until BOARD_SIZE)
-            if (areEqual(cells[0][0], cells[1][1], cells[2][2]) || areEqual(cells[0][2], cells[1][1], cells[2][0]))
+        for (i in GameConstant.INDEX_ZERO until GameConstant.BOARD_SIZE)
+            if (areEqual(cells[GameConstant.INDEX_ZERO][GameConstant.INDEX_ZERO], cells[GameConstant.INDEX_ONE][GameConstant.INDEX_ONE], cells[GameConstant.INDEX_TWO][GameConstant.INDEX_TWO]) ||
+                areEqual(cells[GameConstant.INDEX_ZERO][GameConstant.INDEX_TWO], cells[GameConstant.INDEX_ONE][GameConstant.INDEX_ONE], cells[GameConstant.INDEX_TWO][GameConstant.INDEX_ZERO]))
                 return true
         return false
     }
@@ -46,8 +47,8 @@ class Game(var playerOne: String, var playerTwo: String) {
             if (cells.isEmpty()) return false
         for (cell in cells)
             if (cell.player?.value.isNullOrEmpty()) return false
-        val comparisonBase = cells[0]
-        for (i in 1 until cells.size)
+        val comparisonBase = cells[GameConstant.INDEX_ZERO]
+        for (i in GameConstant.INDEX_ONE until cells.size)
             if (!comparisonBase.player?.value.equals(cells[i].player?.value)) return false
         return true
     }
