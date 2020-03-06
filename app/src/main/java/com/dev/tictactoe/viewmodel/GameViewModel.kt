@@ -13,6 +13,7 @@ class GameViewModel: ViewModel() {
     lateinit var game: Game
     lateinit var cells: ObservableArrayMap<String, String>
     var winner = MutableLiveData<String>()
+    var noWinner = MutableLiveData<String>()
 
     fun init(playerOne: String, playerTwo: String){
         game = Game(playerOne, playerTwo)
@@ -20,6 +21,7 @@ class GameViewModel: ViewModel() {
     }
 
     fun getWinner(): LiveData<String> = winner
+    fun getNoWinner(): LiveData<String> = noWinner
 
     fun onClickedCellAt(row: Int, column: Int) {
         if (game.cells[row][column].isEmpty) {
