@@ -1,4 +1,4 @@
-package com.dev.tictactoe.constant
+package com.dev.tictactoe.model.constant
 
 class GameConstant {
     companion object {

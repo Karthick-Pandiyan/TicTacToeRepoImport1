@@ -4,14 +4,12 @@ import androidx.databinding.ObservableArrayMap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dev.tictactoe.constant.GameConstant.Companion.NO_WINNER_FOUND
-import com.dev.tictactoe.model.Cell
-import com.dev.tictactoe.model.Game
-import com.kp.tictactoe.utilities.StringUtility
+import com.dev.tictactoe.model.constant.GameConstant.Companion.NO_WINNER_FOUND
+import com.dev.tictactoe.model.Board
 
 class GameViewModel: ViewModel() {
 
-    lateinit var game: Game
+    lateinit var board: Board
     lateinit var cells: ObservableArrayMap<String, String>
     lateinit var playerOne: String
     lateinit var playerTwo: String
@@ -21,7 +19,7 @@ class GameViewModel: ViewModel() {
     fun init(playerOne: String, playerTwo: String){
         this.playerOne = playerOne
         this.playerTwo = playerTwo
-        game = Game(playerOne, playerTwo)
+        board = Board(playerOne, playerTwo)
         cells = ObservableArrayMap()
     }
 
@@ -29,24 +27,20 @@ class GameViewModel: ViewModel() {
     fun getNoWinner(): LiveData<String> = noWinner
 
     fun onClickedCellAt(row: Int, column: Int) {
-        if (game.cells[row][column].isEmpty) {
-            game.cells[row][column] = Cell(game.currentPlayer)
-            cells[StringUtility.stringFromNumbers(row, column)] = game.currentPlayer.value
-            if (!hasGameEnded()) game.switchPlayer()
+        if (board.getCell(row, column).isEmptyCell) {
+            board.setCurrentPlayer(cells, row, column)
+            hasGameEnded()
         }
     }
 
-    fun hasGameEnded(): Boolean {
-        if(game.isWinnerAvailable()){
-            winner.postValue(game.currentPlayer.name)
-            return true
+    fun hasGameEnded() {
+        return when {
+            board.isWinnerAvailable() -> winner.postValue(board.currentPlayer.name)
+            board.isFull() -> noWinner.postValue(NO_WINNER_FOUND)
+            else -> board.switchPlayer()
         }
-        if(game.isBoardFull()) {
-            noWinner.postValue(NO_WINNER_FOUND)
-            return true
-        }
-        return false
     }
+
     fun resetGame(){
         init(playerOne, playerTwo)
         winner = MutableLiveData()

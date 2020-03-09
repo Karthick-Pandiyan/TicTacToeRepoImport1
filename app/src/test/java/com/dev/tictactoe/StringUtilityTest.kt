@@ -8,9 +8,9 @@ class StringUtilityTest {
 
     @Test
     fun `Given function should return String of given numbers`(){
-        val expectedResult = "01"
 
         val actualResult = stringFromNumbers(0,1)
+        val expectedResult = "01"
 
         Assert.assertEquals(expectedResult, actualResult)
     }

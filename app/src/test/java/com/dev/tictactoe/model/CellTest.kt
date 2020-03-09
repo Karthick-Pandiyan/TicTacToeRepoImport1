@@ -12,22 +12,22 @@ class CellTest {
 
     @Test
     fun `Given function should return expected player name, when player one passed`(){
-        val expectedResult = playerOne
 
         val actualResult = cell.player?.name
+        val expectedResult = playerOne
 
         Assert.assertEquals(expectedResult, actualResult)
     }
 
     @Test
     fun `Given function should return expected value, when cell is not null`(){
-        val actualResult = cell.isEmpty
+        val actualResult = cell.isEmptyCell
         Assert.assertFalse(actualResult)
     }
 
     @Test
     fun `Given function should return expected value, when player value is not null or not empty in the cell`(){
-        val actualResult = cell.isEmpty
+        val actualResult = cell.isEmptyCell
         Assert.assertTrue(!actualResult)
     }
 }
